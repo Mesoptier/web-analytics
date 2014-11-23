@@ -54,6 +54,9 @@ void agent01::receiveInfo(int month, int day, int *imps_, int* clicks_, double* 
 		budgetRemaining += 1000;
 	}
 
+	for (int i = 0; i < numberOfKeywords; i++){
+		impressions[day][i].push_back(imps_[i]);
+	}
 
 	//////////////////////////////////////////////////
 	//////////////////////////////////////////////////
@@ -71,7 +74,7 @@ double* agent01::getBidsForAllKeywords(){
     //first month we bid nothing for the keywords thus conserving money
     if (month == 0){
        for(int i=0;i<numberOfKeywords;i++)
-            allBids[i]=0; 
+            allBids[i]=0;
     } else {
         int totalImpressions = 0;
         for(int i=0;i<numberOfKeywords;i++)
