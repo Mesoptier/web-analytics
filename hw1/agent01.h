@@ -17,9 +17,11 @@ private:
 	double monthBudget;
 	double budgetRemaining;
 
-	int prevMonth;
-	int prevDayOfMonth;
+	int currentMonth;
+	int currentDayOfWeek;
+	int currentDayOfMonth;
 	vector< vector< vector<int> > > impressions; // impressions[day][keyword][i]
+	vector< vector<double> > averageImpressions; // impressions[day][keyword]
 };
 
 #endif // AGENT01_H

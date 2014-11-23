@@ -8,11 +8,15 @@ agent01::agent01(int numberOfKeywords_, double monthBudget_){
 	budgetRemaining = monthBudget;
 
 	// Initialize our variables
-	prevMonth = 0;
+	currentMonth = 0;
+	currentDayOfWeek = 0;
+	currentDayOfMonth = 0;
 
 	impressions.resize(7);
+	averageImpressions.resize(7);
 	for (int i = 0; i < 7; i++) {
 		impressions[i].resize(numberOfKeywords);
+		averageImpressions[i].resize(numberOfKeywords);
 	}
 }
 
@@ -49,13 +53,28 @@ void agent01::receiveInfo(int month, int day, int *imps_, int* clicks_, double* 
 	//////////////////////////////////////////////////
 
 	// If yesterday's month != today's month, increase the budget
-	if (prevMonth != month) {
-		prevMonth = month;
+	if (currentMonth != month) {
+		currentMonth = month;
+		currentDayOfMonth = 0;
 		budgetRemaining += 1000;
 	}
 
+	currentDayOfWeek = day;
+	currentDayOfMonth = currentDayOfMonth++;
+
 	for (int i = 0; i < numberOfKeywords; i++){
 		impressions[day][i].push_back(imps_[i]);
+
+		// Calculate average number of impressions
+		int total = 0;
+		int size = impressions[day][i].size;
+
+		for (int j = 0; j < size; j++) {
+			total += impressions[day][i][j];
+			size++;
+		}
+
+		averageImpressions[day][i] = total / (double)size;
 	}
 
 	//////////////////////////////////////////////////
