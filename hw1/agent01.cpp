@@ -7,7 +7,7 @@ agent01::agent01(int numberOfKeywords_, double monthBudget_){
     monthBudget=monthBudget_;
     budgetRemaining=monthBudget;
 
-    currentMonth = 0;
+    prevMonth = 0;
 }
 
 agent01::~agent01(){
@@ -42,7 +42,11 @@ void agent01::receiveInfo(int month, int day, int *imps_, int* clicks_, double* 
     ///  Please ensure that when the month switches you get 1000 euro's extra budget
     //////////////////////////////////////////////////
 
-
+    // If yesterday's month != today's month, increase the budget
+    if (prevMonth != month) {
+        prevMonth = month;
+        budgetRemaining += 1000;
+    }
 
 
     //////////////////////////////////////////////////

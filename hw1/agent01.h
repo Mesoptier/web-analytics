@@ -17,7 +17,7 @@ private:
     double monthBudget;
     double budgetRemaining;
 
-    int currentMonth;
+    int prevMonth;
 };
 
 #endif // AGENT01_H
