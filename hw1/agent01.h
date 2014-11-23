@@ -7,7 +7,7 @@ class agent01{
 public:
     agent01(int numberOfKeywords_,double monthBudget_);
     ~agent01();
-    void receiveInfo(int month, int day, int* clicks_, double* cost_, double* pos_);
+    void receiveInfo(int month, int day, int* imps_, int* clicks_, double* cost_, double* pos_);
     double* getBidsForAllKeywords();
     double* getMaxBudgetForAllKeywords();
 
@@ -18,6 +18,7 @@ private:
     double budgetRemaining;
 
     int prevMonth;
+    vector< vector< vector<int> > > impressions;
 };
 
 #endif // AGENT01_H

@@ -7,7 +7,13 @@ agent01::agent01(int numberOfKeywords_, double monthBudget_){
     monthBudget=monthBudget_;
     budgetRemaining=monthBudget;
 
+    // Initialize our variables
     prevMonth = 0;
+
+    impressions.resize(7);
+    for (int i = 0; i < 7; i++) {
+        impressions[i].resize(numberOfKeywords);
+    }
 }
 
 agent01::~agent01(){
