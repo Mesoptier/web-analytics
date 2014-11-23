@@ -68,8 +68,21 @@ double* agent01::getBidsForAllKeywords(){
 	///  Below here, make code to set the correct bids for the simulation
 	//////////////////////////////////////////////////
 
+    //first month we bid nothing for the keywords thus conserving money
+    if (month == 0){
+       for(int i=0;i<numberOfKeywords;i++)
+            allBids[i]=0; 
+    } else {
+        int totalImpressions = 0;
+        for(int i=0;i<numberOfKeywords;i++)
+            totalImpressions += impressions[3, i];
 
+        double projectedClickFactor = totalbudget/totalImpressions;
 
+        for(int i=0;i<numberOfKeywords;i++)
+            allBids[i] = projectedClickFactor*
+
+    }
 
 	//////////////////////////////////////////////////
 	//////////////////////////////////////////////////
