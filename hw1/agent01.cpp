@@ -6,6 +6,8 @@ agent01::agent01(int numberOfKeywords_, double monthBudget_){
     numberOfKeywords=numberOfKeywords_;
     monthBudget=monthBudget_;
     budgetRemaining=monthBudget;
+
+    currentMonth = 0;
 }
 
 agent01::~agent01(){

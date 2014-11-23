@@ -16,6 +16,8 @@ private:
     double getRandBetween0and1(){return ((double)rand())/RAND_MAX;}
     double monthBudget;
     double budgetRemaining;
+
+    int currentMonth;
 };
 
 #endif // AGENT01_H
