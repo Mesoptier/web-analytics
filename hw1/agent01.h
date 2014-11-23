@@ -18,8 +18,8 @@ private:
 	double budgetRemaining;
 
 	int prevMonth;
-	vector< vector< vector<int> > > impressions;
-    int prevDayOfMonth;
+	int prevDayOfMonth;
+	vector< vector< vector<int> > > impressions; // impressions[day][keyword][i]
 };
 
 #endif // AGENT01_H
