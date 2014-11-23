@@ -20,6 +20,7 @@ private:
 	int currentMonth;
 	int currentDayOfWeek;
 	int currentDayOfMonth;
+	double moneyPerImpression;
 	vector< vector< vector<int> > > impressions; // impressions[day][keyword][i]
 	vector< vector<double> > averageImpressions; // impressions[day][keyword]
 };

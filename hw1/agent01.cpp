@@ -124,7 +124,10 @@ double* agent01::getMaxBudgetForAllKeywords(){
 
 	}
 	else {
-
+		for (int i = 0; i < numberOfKeywords; i++)
+		{	//moneyPerImpression moet nog aangemaakt worden
+			allBudget[i] = averageImpressions[currentDayOfWeek][i]*moneyPerImpression;
+		}
 	}
 
 
