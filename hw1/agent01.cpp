@@ -91,18 +91,31 @@ double* agent01::getBidsForAllKeywords(){
 	//////////////////////////////////////////////////
 
     //first month we bid nothing for the keywords thus conserving money
-    if (month == 0){
+    if (currentMonth == 0){
        for(int i=0;i<numberOfKeywords;i++)
             allBids[i]=0;
     } else {
         int totalImpressions = 0;
-        for(int i=0;i<numberOfKeywords;i++)
-            totalImpressions += impressions[3, i];
+        for(int i=0;i<numberOfKeywords;i++){
+            //figure out the day for which we calculate bids
+            int currentDay;
+            if (currentDayOfWeek == 6){
+                currentDay = 0;
+            } else {
+                currentDay = currentDayOfWeek+1;
+            }
+            //total number of impressions across all keywords
+            totalImpressions += averageImpressions[currentDay][i];
+            
+        }
+        //calculate  proportional factor of money per impression
+        moneyPerImpression = monthBudget/totalImpressions;
 
-        double projectedClickFactor = totalbudget/totalImpressions;
-
+        //TODO use moneyPerImpression proportional mltiplier to figure out
+        //a reasonabe amount to bid
+        //also base this chocie on previous bid positiions.
         for(int i=0;i<numberOfKeywords;i++)
-            allBids[i] = projectedClickFactor*
+            allBids[i] = (moneyPerImpression*averageImpressions[currentDay][i] 
 
     }
 
