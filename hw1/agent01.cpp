@@ -14,9 +14,15 @@ agent01::agent01(int numberOfKeywords_, double monthBudget_){
 
 	impressions.resize(7);
 	averageImpressions.resize(7);
+	historicBidPrices.resize(7);
+	historicCostPaid.resize(7);
+	historicPositions.resize(7);
 	for (int i = 0; i < 7; i++) {
 		impressions[i].resize(numberOfKeywords);
 		averageImpressions[i].resize(numberOfKeywords);
+		historicBidPrices[i].resize(numberOfKeywords);
+		historicCostPaid[i].resize(numberOfKeywords);
+		historicPositions[i].resize(numberOfKeywords);
 	}
 }
 
@@ -71,10 +77,12 @@ void agent01::receiveInfo(int month, int day, int* imps_, int* clicks_, double* 
 
 		for (int j = 0; j < size; j++) {
 			total += impressions[day][i][j];
-			size++;
 		}
 
 		averageImpressions[day][i] = total / (double)size;
+
+		historicCostPaid[day][i] = cost[i];
+		historicPositions[day][i] = pos[i];
 	}
 
 	//////////////////////////////////////////////////
@@ -119,6 +127,9 @@ double* agent01::getBidsForAllKeywords(){
             allBids[i] = moneyPerImpression*averageImpressions[currentDay][i];
 
     }
+
+    for(int i=0;i<numberOfKeywords;i++)
+        historicBids[currentDay] = allBids[i];
 
 	//////////////////////////////////////////////////
 	//////////////////////////////////////////////////

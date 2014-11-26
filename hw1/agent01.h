@@ -25,6 +25,10 @@ private:
 	double moneyPerImpression;
 	std::vector< std::vector< std::vector<int> > > impressions; // impressions[day][keyword][i]
 	std::vector< std::vector<double> > averageImpressions; // impressions[day][keyword]
+	//stores
+	std::vector< std::vector<double> > historicBids;
+	std::vector< std::vector<double> > historicPositions; //check length and then select from end previous x days history
+	std::vector< std::vector<double> > historicCostPaid;
 };
 
 #endif // AGENT01_H
