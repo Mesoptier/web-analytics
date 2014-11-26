@@ -32,7 +32,7 @@ agent01::~agent01(){
     //////////////////////////////////////////////////
 }
 
-void agent01::receiveInfo(int month, int day, int *imps_, int* clicks_, double* cost_, double* pos_){
+void agent01::receiveInfo(int month, int day, int* imps_, int* clicks_, double* cost_, double* pos_){
 	int clicksPerKeyword[numberOfKeywords];
 	int impressionsPerKeyword[numberOfKeywords];
 	double costPerKeyword[numberOfKeywords];
@@ -60,14 +60,14 @@ void agent01::receiveInfo(int month, int day, int *imps_, int* clicks_, double* 
 	}
 
 	currentDayOfWeek = day;
-	currentDayOfMonth = currentDayOfMonth++;
+	currentDayOfMonth++;
 
 	for (int i = 0; i < numberOfKeywords; i++){
 		impressions[day][i].push_back(imps_[i]);
 
 		// Calculate average number of impressions
 		int total = 0;
-		int size = impressions[day][i].size;
+		int size = impressions[day][i].size();
 
 		for (int j = 0; j < size; j++) {
 			total += impressions[day][i][j];
@@ -90,6 +90,8 @@ double* agent01::getBidsForAllKeywords(){
 	///  Below here, make code to set the correct bids for the simulation
 	//////////////////////////////////////////////////
 
+    int currentDay;
+
     //first month we bid nothing for the keywords thus conserving money
     if (currentMonth == 0){
        for(int i=0;i<numberOfKeywords;i++)
@@ -98,7 +100,6 @@ double* agent01::getBidsForAllKeywords(){
         int totalImpressions = 0;
         for(int i=0;i<numberOfKeywords;i++){
             //figure out the day for which we calculate bids
-            int currentDay;
             if (currentDayOfWeek == 6){
                 currentDay = 0;
             } else {
@@ -106,7 +107,7 @@ double* agent01::getBidsForAllKeywords(){
             }
             //total number of impressions across all keywords
             totalImpressions += averageImpressions[currentDay][i];
-            
+
         }
         //calculate  proportional factor of money per impression
         moneyPerImpression = monthBudget/totalImpressions;
@@ -115,7 +116,7 @@ double* agent01::getBidsForAllKeywords(){
         //a reasonabe amount to bid
         //also base this chocie on previous bid positiions.
         for(int i=0;i<numberOfKeywords;i++)
-            allBids[i] = (moneyPerImpression*averageImpressions[currentDay][i] 
+            allBids[i] = moneyPerImpression*averageImpressions[currentDay][i];
 
     }
 
@@ -133,7 +134,7 @@ double* agent01::getMaxBudgetForAllKeywords(){
 	//////////////////////////////////////////////////
 	///  Below here, make code to set the correct budgets for the simulation
 	//////////////////////////////////////////////////
-	if (prevMonth == 0){
+	if (currentMonth == 0){
 
 	}
 	else {

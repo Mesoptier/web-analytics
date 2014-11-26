@@ -1,7 +1,9 @@
 #ifndef AGENT01_H
 #define AGENT01_H
 
-#include <QtCore>
+#include <cstdlib>
+#include <vector>
+
 
 class agent01{
 public:
@@ -21,8 +23,8 @@ private:
 	int currentDayOfWeek;
 	int currentDayOfMonth;
 	double moneyPerImpression;
-	vector< vector< vector<int> > > impressions; // impressions[day][keyword][i]
-	vector< vector<double> > averageImpressions; // impressions[day][keyword]
+	std::vector< std::vector< std::vector<int> > > impressions; // impressions[day][keyword][i]
+	std::vector< std::vector<double> > averageImpressions; // impressions[day][keyword]
 };
 
 #endif // AGENT01_H
