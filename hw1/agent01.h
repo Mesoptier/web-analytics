@@ -1,9 +1,10 @@
 #ifndef AGENT01_H
 #define AGENT01_H
 
+#include<vector>
 #include <cstdlib>
-#include <vector>
 
+using namespace std;
 
 class agent01{
 public:
@@ -21,14 +22,14 @@ private:
 
 	int currentMonth;
 	int currentDayOfWeek;
-	int currentDayOfMonth;
+	double impressionsThisMonth;
 	double moneyPerImpression;
-	std::vector< std::vector< std::vector<int> > > impressions; // impressions[day][keyword][i]
-	std::vector< std::vector<double> > averageImpressions; // impressions[day][keyword]
-	//stores
-	std::vector< std::vector<double> > historicBids;
-	std::vector< std::vector<double> > historicPositions; //check length and then select from end previous x days history
-	std::vector< std::vector<double> > historicCostPaid;
+	int firstWeek;
+	vector< vector< vector<int> > > impressions;	//impressions[day][keyword][i]
+	vector< vector<double> > averageImpressions;	//avg impressions[day][keyword]
+	vector< vector<int> > position;					//position[day][keyword]
+	vector< vector<int> > multiplier;				//multiplier[day][keyword]
+	vector< vector<double> > cost;					//cost[day][keyword]
 };
 
 #endif // AGENT01_H
